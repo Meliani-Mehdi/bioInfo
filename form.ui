@@ -19,6 +19,628 @@
   <property name="windowTitle">
    <string>bioInfo</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">/* ========================================
+   BIOPYTHON GUI - BIOLOGY THEME STYLESHEET
+   Color Palette: DNA Blues, Cell Greens, Lab Whites
+   ======================================== */
+
+/* MAIN WINDOW &amp; BASE STYLING */
+QMainWindow {
+    background-color: #f5f9f7;
+    color: #2c3e36;
+}
+
+QWidget {
+    background-color: #f5f9f7;
+    color: #2c3e36;
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+	border: 0px;
+}
+
+/* PUSH BUTTONS - DNA Helix Inspired */
+QPushButton {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #4a9d7f, stop:1 #3d8269);
+    color: white;
+    border: 2px solid #2d6550;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: bold;
+    min-width: 80px;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #5bb591, stop:1 #4a9d7f);
+    border: 2px solid #3d8269;
+}
+
+QPushButton:pressed {
+    background-color: #2d6550;
+    border: 2px solid #1f4539;
+}
+
+QPushButton:disabled {
+    background-color: #c8d6d1;
+    color: #8a9a94;
+    border: 2px solid #b0c0ba;
+}
+
+/* PRIMARY ACTION BUTTON - Chlorophyll Green */
+QPushButton#primaryButton {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #6cb86c, stop:1 #52a352);
+    border: 2px solid #3d8c3d;
+}
+
+QPushButton#primaryButton:hover {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #7dcc7d, stop:1 #6cb86c);
+}
+
+/* DANGER BUTTON - Caution Red */
+QPushButton#dangerButton {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #d97676, stop:1 #c25c5c);
+    border: 2px solid #a84545;
+}
+
+QPushButton#dangerButton:hover {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #e68a8a, stop:1 #d97676);
+}
+
+/* LINE EDITS &amp; TEXT INPUTS - Lab Equipment Style */
+QLineEdit, QTextEdit, QPlainTextEdit {
+    background-color: white;
+    color: #2c3e36;
+    border: 2px solid #b8d4c8;
+    border-radius: 4px;
+    padding: 6px;
+    selection-background-color: #4a9d7f;
+    selection-color: white;
+}
+
+QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus {
+    border: 2px solid #4a9d7f;
+    background-color: #fcfffe;
+}
+
+QLineEdit:disabled, QTextEdit:disabled, QPlainTextEdit:disabled {
+    background-color: #e8f0ec;
+    color: #8a9a94;
+}
+
+/* COMBO BOXES - Microscope Dropdown Style */
+QComboBox {
+    background-color: white;
+    color: #2c3e36;
+    border: 2px solid #b8d4c8;
+    border-radius: 4px;
+    padding: 6px 10px;
+    min-width: 100px;
+}
+
+QComboBox:hover {
+    border: 2px solid #4a9d7f;
+}
+
+QComboBox:focus {
+    border: 2px solid #3d8269;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 20px;
+}
+
+QComboBox::down-arrow {
+    image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgMUw2IDZMMTEgMSIgc3Ryb2tlPSIjM2Q4MjY5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==);
+    width: 12px;
+    height: 8px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: white;
+    border: 2px solid #4a9d7f;
+    selection-background-color: #d4ebe2;
+    selection-color: #2c3e36;
+    outline: none;
+}
+
+/* SPIN BOXES - Measurement Controls */
+QSpinBox, QDoubleSpinBox {
+    background-color: white;
+    color: #2c3e36;
+    border: 2px solid #b8d4c8;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+QSpinBox:focus, QDoubleSpinBox:focus {
+    border: 2px solid #4a9d7f;
+}
+
+QSpinBox::up-button, QDoubleSpinBox::up-button {
+    background-color: #e8f0ec;
+    border-left: 1px solid #b8d4c8;
+    border-top-right-radius: 3px;
+}
+
+QSpinBox::down-button, QDoubleSpinBox::down-button {
+    background-color: #e8f0ec;
+    border-left: 1px solid #b8d4c8;
+    border-bottom-right-radius: 3px;
+}
+
+QSpinBox::up-button:hover, QDoubleSpinBox::up-button:hover,
+QSpinBox::down-button:hover, QDoubleSpinBox::down-button:hover {
+    background-color: #d4ebe2;
+}
+
+/* CHECKBOXES - Experiment Checklist Style */
+QCheckBox {
+    spacing: 8px;
+    color: #2c3e36;
+}
+
+QCheckBox::indicator {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4a9d7f;
+    border-radius: 3px;
+    background-color: white;
+}
+
+QCheckBox::indicator:hover {
+    border: 2px solid #3d8269;
+    background-color: #f0f9f5;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #4a9d7f;
+    border: 2px solid #3d8269;
+    image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMiAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMSA1TDQgOEwxMSAxIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==);
+}
+
+/* RADIO BUTTONS - Sample Selection */
+QRadioButton {
+    spacing: 8px;
+    color: #2c3e36;
+}
+
+QRadioButton::indicator {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4a9d7f;
+    border-radius: 9px;
+    background-color: white;
+}
+
+QRadioButton::indicator:hover {
+    border: 2px solid #3d8269;
+    background-color: #f0f9f5;
+}
+
+QRadioButton::indicator:checked {
+    background-color: white;
+    border: 2px solid #3d8269;
+}
+
+QRadioButton::indicator:checked::after {
+    content: &quot;&quot;;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #4a9d7f;
+}
+
+/* SLIDERS - Gradient Controls */
+QSlider::groove:horizontal {
+    height: 6px;
+    background-color: #d4ebe2;
+    border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+    background-color: #4a9d7f;
+    border: 2px solid #3d8269;
+    width: 16px;
+    margin: -6px 0;
+    border-radius: 8px;
+}
+
+QSlider::handle:horizontal:hover {
+    background-color: #5bb591;
+}
+
+QSlider::groove:vertical {
+    width: 6px;
+    background-color: #d4ebe2;
+    border-radius: 3px;
+}
+
+QSlider::handle:vertical {
+    background-color: #4a9d7f;
+    border: 2px solid #3d8269;
+    height: 16px;
+    margin: 0 -6px;
+    border-radius: 8px;
+}
+
+/* PROGRESS BARS - DNA Replication Style */
+QProgressBar {
+    background-color: #e8f0ec;
+    border: 2px solid #b8d4c8;
+    border-radius: 6px;
+    text-align: center;
+    color: #2c3e36;
+    font-weight: bold;
+}
+
+QProgressBar::chunk {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                      stop:0 #4a9d7f, stop:0.5 #5bb591, stop:1 #4a9d7f);
+    border-radius: 4px;
+}
+
+/* TAB WIDGET - Laboratory Notebook */
+QTabWidget::pane {
+    border: 2px solid #b8d4c8;
+    background-color: white;
+    border-radius: 4px;
+    top: -1px;
+}
+
+QTabBar::tab {
+    background-color: #e8f0ec;
+    color: #2c3e36;
+    border: 2px solid #b8d4c8;
+    border-bottom: none;
+    padding: 8px 20px;
+    margin-right: 2px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+QTabBar::tab:selected {
+    background-color: white;
+    border-color: #4a9d7f;
+    border-bottom: 2px solid white;
+    font-weight: bold;
+}
+
+QTabBar::tab:hover:!selected {
+    background-color: #d4ebe2;
+}
+
+/* GROUP BOXES - Experiment Sections */
+QGroupBox {
+    background-color: white;
+    border: 2px solid #b8d4c8;
+    border-radius: 6px;
+    margin-top: 12px;
+    padding-top: 16px;
+    font-weight: bold;
+    color: #3d8269;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    left: 12px;
+    padding: 0 8px;
+    background-color: white;
+    color: #3d8269;
+}
+
+/* SCROLL BARS - Microscope Slide Style */
+QScrollBar:vertical {
+    background-color: #e8f0ec;
+    width: 14px;
+    border-radius: 7px;
+    margin: 0;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #4a9d7f;
+    border-radius: 6px;
+    min-height: 30px;
+    margin: 2px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #5bb591;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar:horizontal {
+    background-color: #e8f0ec;
+    height: 14px;
+    border-radius: 7px;
+    margin: 0;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #4a9d7f;
+    border-radius: 6px;
+    min-width: 30px;
+    margin: 2px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #5bb591;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    width: 0px;
+}
+
+/* LIST &amp; TABLE VIEWS - Data Display */
+QListView, QTreeView, QTableView {
+    background-color: white;
+    alternate-background-color: #f5f9f7;
+    border: 2px solid #b8d4c8;
+    border-radius: 4px;
+    selection-background-color: #d4ebe2;
+    selection-color: #2c3e36;
+    outline: none;
+}
+
+QListView::item:hover, QTreeView::item:hover, QTableView::item:hover {
+    background-color: #e8f0ec;
+}
+
+QTableView QHeaderView::section {
+    background-color: #4a9d7f;
+    color: white;
+    padding: 6px;
+    border: none;
+    border-right: 1px solid #3d8269;
+    font-weight: bold;
+}
+
+/* MENU BAR - Lab Equipment Style */
+QMenuBar {
+    background-color: #3d8269;
+    color: white;
+    padding: 4px;
+}
+
+QMenuBar::item {
+    background-color: transparent;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+QMenuBar::item:selected {
+    background-color: #4a9d7f;
+}
+
+QMenuBar::item:pressed {
+    background-color: #2d6550;
+}
+
+/* MENU - Dropdown Style */
+QMenu {
+    background-color: white;
+    border: 2px solid #4a9d7f;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+QMenu::item {
+    padding: 8px 30px 8px 12px;
+    border-radius: 3px;
+}
+
+QMenu::item:selected {
+    background-color: #d4ebe2;
+    color: #2c3e36;
+}
+
+QMenu::separator {
+    height: 1px;
+    background-color: #b8d4c8;
+    margin: 4px 8px;
+}
+
+/* TOOLBAR - Lab Bench Style */
+QToolBar {
+    background-color: #e8f0ec;
+    border: none;
+    border-bottom: 2px solid #b8d4c8;
+    spacing: 4px;
+    padding: 4px;
+}
+
+QToolButton {
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    padding: 6px;
+    color: #2c3e36;
+}
+
+QToolButton:hover {
+    background-color: #d4ebe2;
+    border: 2px solid #4a9d7f;
+}
+
+QToolButton:pressed {
+    background-color: #b8d4c8;
+}
+
+/* STATUS BAR - Microscope Base */
+QStatusBar {
+    background-color: #3d8269;
+    color: white;
+    border-top: 2px solid #2d6550;
+}
+
+/* TOOLTIPS - Info Labels */
+QToolTip {
+    background-color: #2c3e36;
+    color: white;
+    border: 2px solid #4a9d7f;
+    border-radius: 4px;
+    padding: 6px;
+    opacity: 230;
+}
+
+/* SPLITTERS - Dividers */
+QSplitter::handle {
+    background-color: #b8d4c8;
+}
+
+QSplitter::handle:horizontal {
+    width: 3px;
+}
+
+QSplitter::handle:vertical {
+    height: 3px;
+}
+
+QSplitter::handle:hover {
+    background-color: #4a9d7f;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>64</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(232, 240, 236);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QWidget" name="widget" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>20</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>20</pointsize>
+          <bold>true</bold>
+          <strikeout>false</strikeout>
+          <stylestrategy>PreferAntialias</stylestrategy>
+          <hintingpreference>PreferNoHinting</hintingpreference>
+         </font>
+        </property>
+        <property name="text">
+         <string>BIO PYTHON</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QFrame" name="frame_2">
+       <property name="minimumSize">
+        <size>
+         <width>240</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(232, 240, 236);</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Shape::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Shadow::Raised</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QStackedWidget" name="stackedWidget">
+       <widget class="QWidget" name="enter_seq">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QPushButton" name="load_btn">
+           <property name="minimumSize">
+            <size>
+             <width>256</width>
+             <height>64</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>256</width>
+             <height>64</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Segoe UI</family>
+             <pointsize>18</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Load Sequance</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="page_2"/>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

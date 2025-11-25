@@ -15,9 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QPushButton, QSizePolicy, QStackedWidget, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QFrame, QHBoxLayout,
+    QHeaderView, QLabel, QPushButton, QScrollArea,
+    QSizePolicy, QSpacerItem, QStackedWidget, QTableWidget,
+    QTableWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_bioInfo(object):
     def setupUi(self, bioInfo):
@@ -532,7 +533,9 @@ class Ui_bioInfo(object):
         self.frame = QFrame(bioInfo)
         self.frame.setObjectName(u"frame")
         self.frame.setMinimumSize(QSize(0, 64))
-        self.frame.setStyleSheet(u"background-color: rgb(232, 240, 236);")
+        self.frame.setStyleSheet(u"QWidget {\n"
+"    background-color: #e8f0ec;\n"
+"}")
         self.frame.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.frame)
@@ -565,9 +568,42 @@ class Ui_bioInfo(object):
         self.frame_2 = QFrame(bioInfo)
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setMinimumSize(QSize(240, 0))
-        self.frame_2.setStyleSheet(u"background-color: rgb(232, 240, 236);")
+        self.frame_2.setStyleSheet(u"QWidget {\n"
+"    background-color: #e8f0ec;\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                      stop:0 #4a9d7f, stop:1 #3d8269);\n"
+"}")
         self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_5 = QVBoxLayout(self.frame_2)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.info_page = QPushButton(self.frame_2)
+        self.info_page.setObjectName(u"info_page")
+
+        self.verticalLayout_5.addWidget(self.info_page)
+
+        self.pushButton_2 = QPushButton(self.frame_2)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+
+        self.verticalLayout_5.addWidget(self.pushButton_2)
+
+        self.pushButton_3 = QPushButton(self.frame_2)
+        self.pushButton_3.setObjectName(u"pushButton_3")
+
+        self.verticalLayout_5.addWidget(self.pushButton_3)
+
+        self.pushButton_4 = QPushButton(self.frame_2)
+        self.pushButton_4.setObjectName(u"pushButton_4")
+
+        self.verticalLayout_5.addWidget(self.pushButton_4)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_5.addItem(self.verticalSpacer_2)
+
 
         self.horizontalLayout.addWidget(self.frame_2)
 
@@ -580,7 +616,7 @@ class Ui_bioInfo(object):
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.load_btn = QPushButton(self.enter_seq)
         self.load_btn.setObjectName(u"load_btn")
-        self.load_btn.setMinimumSize(QSize(256, 64))
+        self.load_btn.setMinimumSize(QSize(116, 64))
         self.load_btn.setMaximumSize(QSize(256, 64))
         font1 = QFont()
         font1.setFamilies([u"Segoe UI"])
@@ -591,9 +627,144 @@ class Ui_bioInfo(object):
         self.horizontalLayout_3.addWidget(self.load_btn)
 
         self.stackedWidget.addWidget(self.enter_seq)
-        self.page_2 = QWidget()
-        self.page_2.setObjectName(u"page_2")
-        self.stackedWidget.addWidget(self.page_2)
+        self.info_window = QWidget()
+        self.info_window.setObjectName(u"info_window")
+        self.verticalLayout_2 = QVBoxLayout(self.info_window)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.frame_3 = QFrame(self.info_window)
+        self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setMinimumSize(QSize(0, 200))
+        self.frame_3.setMaximumSize(QSize(16777215, 200))
+        self.frame_3.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_3 = QVBoxLayout(self.frame_3)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.id_label = QLabel(self.frame_3)
+        self.id_label.setObjectName(u"id_label")
+
+        self.horizontalLayout_4.addWidget(self.id_label)
+
+        self.len_label = QLabel(self.frame_3)
+        self.len_label.setObjectName(u"len_label")
+
+        self.horizontalLayout_4.addWidget(self.len_label)
+
+        self.type_label = QLabel(self.frame_3)
+        self.type_label.setObjectName(u"type_label")
+
+        self.horizontalLayout_4.addWidget(self.type_label)
+
+
+        self.verticalLayout_3.addLayout(self.horizontalLayout_4)
+
+        self.desc_label = QLabel(self.frame_3)
+        self.desc_label.setObjectName(u"desc_label")
+
+        self.verticalLayout_3.addWidget(self.desc_label)
+
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.gc_label = QLabel(self.frame_3)
+        self.gc_label.setObjectName(u"gc_label")
+
+        self.horizontalLayout_5.addWidget(self.gc_label)
+
+        self.atgc_label = QLabel(self.frame_3)
+        self.atgc_label.setObjectName(u"atgc_label")
+
+        self.horizontalLayout_5.addWidget(self.atgc_label)
+
+        self.mw_label = QLabel(self.frame_3)
+        self.mw_label.setObjectName(u"mw_label")
+
+        self.horizontalLayout_5.addWidget(self.mw_label)
+
+
+        self.verticalLayout_3.addLayout(self.horizontalLayout_5)
+
+
+        self.verticalLayout_2.addWidget(self.frame_3)
+
+        self.frame_4 = QFrame(self.info_window)
+        self.frame_4.setObjectName(u"frame_4")
+        self.frame_4.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_4.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_4 = QVBoxLayout(self.frame_4)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.base_table = QTableWidget(self.frame_4)
+        if (self.base_table.columnCount() < 4):
+            self.base_table.setColumnCount(4)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.base_table.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.base_table.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.base_table.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.base_table.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        if (self.base_table.rowCount() < 1):
+            self.base_table.setRowCount(1)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.base_table.setVerticalHeaderItem(0, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        __qtablewidgetitem5.setTextAlignment(Qt.AlignCenter);
+        __qtablewidgetitem5.setFlags(Qt.ItemIsEnabled);
+        self.base_table.setItem(0, 0, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        __qtablewidgetitem6.setTextAlignment(Qt.AlignCenter);
+        __qtablewidgetitem6.setFlags(Qt.ItemIsEnabled);
+        self.base_table.setItem(0, 1, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        __qtablewidgetitem7.setTextAlignment(Qt.AlignCenter);
+        __qtablewidgetitem7.setFlags(Qt.ItemIsEnabled);
+        self.base_table.setItem(0, 2, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        __qtablewidgetitem8.setTextAlignment(Qt.AlignCenter);
+        __qtablewidgetitem8.setFlags(Qt.ItemIsEnabled);
+        self.base_table.setItem(0, 3, __qtablewidgetitem8)
+        self.base_table.setObjectName(u"base_table")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.base_table.sizePolicy().hasHeightForWidth())
+        self.base_table.setSizePolicy(sizePolicy)
+        self.base_table.setMinimumSize(QSize(500, 60))
+        self.base_table.setMaximumSize(QSize(500, 63))
+        self.base_table.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.base_table.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.base_table.setSizeAdjustPolicy(QAbstractScrollArea.SizeAdjustPolicy.AdjustToContentsOnFirstShow)
+
+        self.verticalLayout_4.addWidget(self.base_table)
+
+        self.scrollArea = QScrollArea(self.frame_4)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setMinimumSize(QSize(0, 40))
+        self.scrollArea.setMaximumSize(QSize(16777215, 40))
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 996, 40))
+        self.horizontalLayout_6 = QHBoxLayout(self.scrollAreaWidgetContents)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.sequence_view = QLabel(self.scrollAreaWidgetContents)
+        self.sequence_view.setObjectName(u"sequence_view")
+
+        self.horizontalLayout_6.addWidget(self.sequence_view)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.verticalLayout_4.addWidget(self.scrollArea)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_4.addItem(self.verticalSpacer)
+
+
+        self.verticalLayout_2.addWidget(self.frame_4)
+
+        self.stackedWidget.addWidget(self.info_window)
 
         self.horizontalLayout.addWidget(self.stackedWidget)
 
@@ -603,12 +774,50 @@ class Ui_bioInfo(object):
 
         self.retranslateUi(bioInfo)
 
+        self.stackedWidget.setCurrentIndex(0)
+
+
         QMetaObject.connectSlotsByName(bioInfo)
     # setupUi
 
     def retranslateUi(self, bioInfo):
         bioInfo.setWindowTitle(QCoreApplication.translate("bioInfo", u"bioInfo", None))
         self.label.setText(QCoreApplication.translate("bioInfo", u"BIO PYTHON", None))
+        self.info_page.setText(QCoreApplication.translate("bioInfo", u"Information", None))
+        self.pushButton_2.setText(QCoreApplication.translate("bioInfo", u"PushButton", None))
+        self.pushButton_3.setText(QCoreApplication.translate("bioInfo", u"PushButton", None))
+        self.pushButton_4.setText(QCoreApplication.translate("bioInfo", u"PushButton", None))
         self.load_btn.setText(QCoreApplication.translate("bioInfo", u"Load Sequance", None))
+        self.id_label.setText(QCoreApplication.translate("bioInfo", u"ID: -", None))
+        self.len_label.setText(QCoreApplication.translate("bioInfo", u"Length: -", None))
+        self.type_label.setText(QCoreApplication.translate("bioInfo", u"Type: -", None))
+        self.desc_label.setText(QCoreApplication.translate("bioInfo", u"Description: -", None))
+        self.gc_label.setText(QCoreApplication.translate("bioInfo", u"GC%: -", None))
+        self.atgc_label.setText(QCoreApplication.translate("bioInfo", u"AT/GC Ratio: -", None))
+        self.mw_label.setText(QCoreApplication.translate("bioInfo", u"Molecular Weight: -", None))
+        ___qtablewidgetitem = self.base_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("bioInfo", u"A", None));
+        ___qtablewidgetitem1 = self.base_table.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("bioInfo", u"T", None));
+        ___qtablewidgetitem2 = self.base_table.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("bioInfo", u"C", None));
+        ___qtablewidgetitem3 = self.base_table.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("bioInfo", u"G", None));
+        ___qtablewidgetitem4 = self.base_table.verticalHeaderItem(0)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("bioInfo", u"    COUNT    ", None));
+
+        __sortingEnabled = self.base_table.isSortingEnabled()
+        self.base_table.setSortingEnabled(False)
+        ___qtablewidgetitem5 = self.base_table.item(0, 0)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("bioInfo", u"-", None));
+        ___qtablewidgetitem6 = self.base_table.item(0, 1)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("bioInfo", u"-", None));
+        ___qtablewidgetitem7 = self.base_table.item(0, 2)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("bioInfo", u"-", None));
+        ___qtablewidgetitem8 = self.base_table.item(0, 3)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("bioInfo", u"-", None));
+        self.base_table.setSortingEnabled(__sortingEnabled)
+
+        self.sequence_view.setText(QCoreApplication.translate("bioInfo", u"    -   -   -   -", None))
     # retranslateUi
 

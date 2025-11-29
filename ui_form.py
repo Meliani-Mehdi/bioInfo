@@ -15,10 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QFrame, QHBoxLayout,
-    QHeaderView, QLabel, QPushButton, QScrollArea,
-    QSizePolicy, QSpacerItem, QStackedWidget, QTableWidget,
-    QTableWidgetItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QComboBox, QFrame,
+    QHBoxLayout, QHeaderView, QLabel, QPushButton,
+    QScrollArea, QSizePolicy, QSpacerItem, QStackedWidget,
+    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_bioInfo(object):
     def setupUi(self, bioInfo):
@@ -542,7 +542,7 @@ class Ui_bioInfo(object):
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.widget = QWidget(self.frame)
         self.widget.setObjectName(u"widget")
-        self.widget.setMinimumSize(QSize(20, 0))
+        self.widget.setMinimumSize(QSize(100, 0))
         self.widget.setMaximumSize(QSize(100, 16777215))
 
         self.horizontalLayout_2.addWidget(self.widget)
@@ -559,6 +559,21 @@ class Ui_bioInfo(object):
         self.label.setFont(font)
 
         self.horizontalLayout_2.addWidget(self.label)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer)
+
+        self.select_DNA = QComboBox(self.frame)
+        self.select_DNA.setObjectName(u"select_DNA")
+        self.select_DNA.setMinimumSize(QSize(124, 0))
+        self.select_DNA.setMaximumSize(QSize(350, 16777215))
+        font1 = QFont()
+        font1.setFamilies([u"Segoe UI"])
+        font1.setPointSize(14)
+        self.select_DNA.setFont(font1)
+
+        self.horizontalLayout_2.addWidget(self.select_DNA)
 
 
         self.verticalLayout.addWidget(self.frame)
@@ -582,23 +597,49 @@ class Ui_bioInfo(object):
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.info_page = QPushButton(self.frame_2)
         self.info_page.setObjectName(u"info_page")
+        font2 = QFont()
+        font2.setFamilies([u"Segoe UI"])
+        font2.setPointSize(16)
+        font2.setBold(True)
+        self.info_page.setFont(font2)
 
         self.verticalLayout_5.addWidget(self.info_page)
 
-        self.pushButton_2 = QPushButton(self.frame_2)
-        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.trans_page = QPushButton(self.frame_2)
+        self.trans_page.setObjectName(u"trans_page")
+        self.trans_page.setFont(font2)
 
-        self.verticalLayout_5.addWidget(self.pushButton_2)
+        self.verticalLayout_5.addWidget(self.trans_page)
 
         self.pushButton_3 = QPushButton(self.frame_2)
         self.pushButton_3.setObjectName(u"pushButton_3")
+        self.pushButton_3.setFont(font2)
 
         self.verticalLayout_5.addWidget(self.pushButton_3)
 
         self.pushButton_4 = QPushButton(self.frame_2)
         self.pushButton_4.setObjectName(u"pushButton_4")
+        self.pushButton_4.setFont(font2)
 
         self.verticalLayout_5.addWidget(self.pushButton_4)
+
+        self.pushButton = QPushButton(self.frame_2)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setFont(font2)
+
+        self.verticalLayout_5.addWidget(self.pushButton)
+
+        self.pushButton_5 = QPushButton(self.frame_2)
+        self.pushButton_5.setObjectName(u"pushButton_5")
+        self.pushButton_5.setFont(font2)
+
+        self.verticalLayout_5.addWidget(self.pushButton_5)
+
+        self.pushButton_6 = QPushButton(self.frame_2)
+        self.pushButton_6.setObjectName(u"pushButton_6")
+        self.pushButton_6.setFont(font2)
+
+        self.verticalLayout_5.addWidget(self.pushButton_6)
 
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -618,11 +659,11 @@ class Ui_bioInfo(object):
         self.load_btn.setObjectName(u"load_btn")
         self.load_btn.setMinimumSize(QSize(116, 64))
         self.load_btn.setMaximumSize(QSize(256, 64))
-        font1 = QFont()
-        font1.setFamilies([u"Segoe UI"])
-        font1.setPointSize(18)
-        font1.setBold(True)
-        self.load_btn.setFont(font1)
+        font3 = QFont()
+        font3.setFamilies([u"Segoe UI"])
+        font3.setPointSize(18)
+        font3.setBold(True)
+        self.load_btn.setFont(font3)
 
         self.horizontalLayout_3.addWidget(self.load_btn)
 
@@ -639,50 +680,69 @@ class Ui_bioInfo(object):
         self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.frame_3)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.horizontalLayout_4 = QHBoxLayout()
+        self.info1 = QFrame(self.frame_3)
+        self.info1.setObjectName(u"info1")
+        self.info1.setStyleSheet(u"background-color: rgb(191, 248, 195);\n"
+"border-radius: 16px\n"
+"")
+        self.horizontalLayout_4 = QHBoxLayout(self.info1)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.id_label = QLabel(self.frame_3)
+        self.horizontalLayout_4.setContentsMargins(12, 12, 12, 12)
+        self.id_label = QLabel(self.info1)
         self.id_label.setObjectName(u"id_label")
+        self.id_label.setFont(font1)
 
         self.horizontalLayout_4.addWidget(self.id_label)
 
-        self.len_label = QLabel(self.frame_3)
+        self.len_label = QLabel(self.info1)
         self.len_label.setObjectName(u"len_label")
+        self.len_label.setFont(font1)
 
         self.horizontalLayout_4.addWidget(self.len_label)
 
-        self.type_label = QLabel(self.frame_3)
+        self.type_label = QLabel(self.info1)
         self.type_label.setObjectName(u"type_label")
+        self.type_label.setFont(font1)
 
         self.horizontalLayout_4.addWidget(self.type_label)
 
 
-        self.verticalLayout_3.addLayout(self.horizontalLayout_4)
+        self.verticalLayout_3.addWidget(self.info1)
 
-        self.desc_label = QLabel(self.frame_3)
-        self.desc_label.setObjectName(u"desc_label")
-
-        self.verticalLayout_3.addWidget(self.desc_label)
-
-        self.horizontalLayout_5 = QHBoxLayout()
+        self.info2 = QFrame(self.frame_3)
+        self.info2.setObjectName(u"info2")
+        self.info2.setStyleSheet(u"background-color: rgb(191, 248, 195);\n"
+"border-radius: 16px\n"
+"")
+        self.horizontalLayout_5 = QHBoxLayout(self.info2)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.gc_label = QLabel(self.frame_3)
+        self.horizontalLayout_5.setContentsMargins(12, 12, 12, 12)
+        self.gc_label = QLabel(self.info2)
         self.gc_label.setObjectName(u"gc_label")
+        self.gc_label.setFont(font1)
 
         self.horizontalLayout_5.addWidget(self.gc_label)
 
-        self.atgc_label = QLabel(self.frame_3)
+        self.atgc_label = QLabel(self.info2)
         self.atgc_label.setObjectName(u"atgc_label")
+        self.atgc_label.setFont(font1)
 
         self.horizontalLayout_5.addWidget(self.atgc_label)
 
-        self.mw_label = QLabel(self.frame_3)
+        self.mw_label = QLabel(self.info2)
         self.mw_label.setObjectName(u"mw_label")
+        self.mw_label.setFont(font1)
 
         self.horizontalLayout_5.addWidget(self.mw_label)
 
 
-        self.verticalLayout_3.addLayout(self.horizontalLayout_5)
+        self.verticalLayout_3.addWidget(self.info2)
+
+        self.desc_label = QLabel(self.frame_3)
+        self.desc_label.setObjectName(u"desc_label")
+        self.desc_label.setFont(font1)
+
+        self.verticalLayout_3.addWidget(self.desc_label)
 
 
         self.verticalLayout_2.addWidget(self.frame_3)
@@ -740,16 +800,22 @@ class Ui_bioInfo(object):
 
         self.scrollArea = QScrollArea(self.frame_4)
         self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setMinimumSize(QSize(0, 40))
-        self.scrollArea.setMaximumSize(QSize(16777215, 40))
+        self.scrollArea.setMinimumSize(QSize(0, 50))
+        self.scrollArea.setMaximumSize(QSize(16777215, 50))
+        self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 996, 40))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 996, 50))
         self.horizontalLayout_6 = QHBoxLayout(self.scrollAreaWidgetContents)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.sequence_view = QLabel(self.scrollAreaWidgetContents)
         self.sequence_view.setObjectName(u"sequence_view")
+        font4 = QFont()
+        font4.setFamilies([u"Segoe UI"])
+        font4.setPointSize(18)
+        self.sequence_view.setFont(font4)
 
         self.horizontalLayout_6.addWidget(self.sequence_view)
 
@@ -765,6 +831,151 @@ class Ui_bioInfo(object):
         self.verticalLayout_2.addWidget(self.frame_4)
 
         self.stackedWidget.addWidget(self.info_window)
+        self.trans_window = QWidget()
+        self.trans_window.setObjectName(u"trans_window")
+        self.verticalLayout_6 = QVBoxLayout(self.trans_window)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.holder_trans = QScrollArea(self.trans_window)
+        self.holder_trans.setObjectName(u"holder_trans")
+        self.holder_trans.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.holder_trans.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_4 = QWidget()
+        self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 1014, 636))
+        self.verticalLayout_7 = QVBoxLayout(self.scrollAreaWidgetContents_4)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.lab_DNA = QLabel(self.scrollAreaWidgetContents_4)
+        self.lab_DNA.setObjectName(u"lab_DNA")
+        self.lab_DNA.setFont(font4)
+
+        self.verticalLayout_7.addWidget(self.lab_DNA)
+
+        self.scrollArea_3 = QScrollArea(self.scrollAreaWidgetContents_4)
+        self.scrollArea_3.setObjectName(u"scrollArea_3")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.scrollArea_3.sizePolicy().hasHeightForWidth())
+        self.scrollArea_3.setSizePolicy(sizePolicy1)
+        self.scrollArea_3.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.scrollArea_3.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_3 = QWidget()
+        self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 996, 76))
+        self.horizontalLayout_8 = QHBoxLayout(self.scrollAreaWidgetContents_3)
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.DNA_seq = QLabel(self.scrollAreaWidgetContents_3)
+        self.DNA_seq.setObjectName(u"DNA_seq")
+        sizePolicy.setHeightForWidth(self.DNA_seq.sizePolicy().hasHeightForWidth())
+        self.DNA_seq.setSizePolicy(sizePolicy)
+        self.DNA_seq.setFont(font4)
+
+        self.horizontalLayout_8.addWidget(self.DNA_seq)
+
+        self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_3)
+
+        self.verticalLayout_7.addWidget(self.scrollArea_3)
+
+        self.lab_rev = QLabel(self.scrollAreaWidgetContents_4)
+        self.lab_rev.setObjectName(u"lab_rev")
+        self.lab_rev.setFont(font4)
+
+        self.verticalLayout_7.addWidget(self.lab_rev)
+
+        self.scrollArea_2 = QScrollArea(self.scrollAreaWidgetContents_4)
+        self.scrollArea_2.setObjectName(u"scrollArea_2")
+        sizePolicy1.setHeightForWidth(self.scrollArea_2.sizePolicy().hasHeightForWidth())
+        self.scrollArea_2.setSizePolicy(sizePolicy1)
+        self.scrollArea_2.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.scrollArea_2.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_2 = QWidget()
+        self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 996, 76))
+        self.horizontalLayout_7 = QHBoxLayout(self.scrollAreaWidgetContents_2)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.rev_comp = QLabel(self.scrollAreaWidgetContents_2)
+        self.rev_comp.setObjectName(u"rev_comp")
+        self.rev_comp.setFont(font4)
+
+        self.horizontalLayout_7.addWidget(self.rev_comp)
+
+        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
+
+        self.verticalLayout_7.addWidget(self.scrollArea_2)
+
+        self.label_6 = QLabel(self.scrollAreaWidgetContents_4)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setFont(font4)
+
+        self.verticalLayout_7.addWidget(self.label_6)
+
+        self.scrollArea_5 = QScrollArea(self.scrollAreaWidgetContents_4)
+        self.scrollArea_5.setObjectName(u"scrollArea_5")
+        sizePolicy1.setHeightForWidth(self.scrollArea_5.sizePolicy().hasHeightForWidth())
+        self.scrollArea_5.setSizePolicy(sizePolicy1)
+        self.scrollArea_5.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.scrollArea_5.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_5 = QWidget()
+        self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
+        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 996, 76))
+        self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents_5)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.trans_DNA_RNA = QLabel(self.scrollAreaWidgetContents_5)
+        self.trans_DNA_RNA.setObjectName(u"trans_DNA_RNA")
+        self.trans_DNA_RNA.setFont(font4)
+
+        self.verticalLayout_8.addWidget(self.trans_DNA_RNA)
+
+        self.scrollArea_5.setWidget(self.scrollAreaWidgetContents_5)
+
+        self.verticalLayout_7.addWidget(self.scrollArea_5)
+
+        self.label_2 = QLabel(self.scrollAreaWidgetContents_4)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setFont(font4)
+
+        self.verticalLayout_7.addWidget(self.label_2)
+
+        self.scrollArea_4 = QScrollArea(self.scrollAreaWidgetContents_4)
+        self.scrollArea_4.setObjectName(u"scrollArea_4")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Minimum)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.scrollArea_4.sizePolicy().hasHeightForWidth())
+        self.scrollArea_4.setSizePolicy(sizePolicy2)
+        self.scrollArea_4.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.scrollArea_4.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_7 = QWidget()
+        self.scrollAreaWidgetContents_7.setObjectName(u"scrollAreaWidgetContents_7")
+        self.scrollAreaWidgetContents_7.setGeometry(QRect(0, 0, 996, 76))
+        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.MinimumExpanding)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.scrollAreaWidgetContents_7.sizePolicy().hasHeightForWidth())
+        self.scrollAreaWidgetContents_7.setSizePolicy(sizePolicy3)
+        self.verticalLayout_9 = QVBoxLayout(self.scrollAreaWidgetContents_7)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.label_3 = QLabel(self.scrollAreaWidgetContents_7)
+        self.label_3.setObjectName(u"label_3")
+        sizePolicy.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
+        self.label_3.setSizePolicy(sizePolicy)
+        self.label_3.setFont(font4)
+
+        self.verticalLayout_9.addWidget(self.label_3)
+
+        self.scrollArea_4.setWidget(self.scrollAreaWidgetContents_7)
+
+        self.verticalLayout_7.addWidget(self.scrollArea_4)
+
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_7.addItem(self.verticalSpacer_3)
+
+        self.holder_trans.setWidget(self.scrollAreaWidgetContents_4)
+
+        self.verticalLayout_6.addWidget(self.holder_trans)
+
+        self.stackedWidget.addWidget(self.trans_window)
 
         self.horizontalLayout.addWidget(self.stackedWidget)
 
@@ -774,7 +985,7 @@ class Ui_bioInfo(object):
 
         self.retranslateUi(bioInfo)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(bioInfo)
@@ -784,17 +995,20 @@ class Ui_bioInfo(object):
         bioInfo.setWindowTitle(QCoreApplication.translate("bioInfo", u"bioInfo", None))
         self.label.setText(QCoreApplication.translate("bioInfo", u"BIO PYTHON", None))
         self.info_page.setText(QCoreApplication.translate("bioInfo", u"Information", None))
-        self.pushButton_2.setText(QCoreApplication.translate("bioInfo", u"PushButton", None))
-        self.pushButton_3.setText(QCoreApplication.translate("bioInfo", u"PushButton", None))
-        self.pushButton_4.setText(QCoreApplication.translate("bioInfo", u"PushButton", None))
+        self.trans_page.setText(QCoreApplication.translate("bioInfo", u"Transform", None))
+        self.pushButton_3.setText(QCoreApplication.translate("bioInfo", u"Motif Search", None))
+        self.pushButton_4.setText(QCoreApplication.translate("bioInfo", u"Alignment", None))
+        self.pushButton.setText(QCoreApplication.translate("bioInfo", u"Visualization", None))
+        self.pushButton_5.setText(QCoreApplication.translate("bioInfo", u"NCBI Fetch", None))
+        self.pushButton_6.setText(QCoreApplication.translate("bioInfo", u"Export", None))
         self.load_btn.setText(QCoreApplication.translate("bioInfo", u"Load Sequance", None))
         self.id_label.setText(QCoreApplication.translate("bioInfo", u"ID: -", None))
         self.len_label.setText(QCoreApplication.translate("bioInfo", u"Length: -", None))
         self.type_label.setText(QCoreApplication.translate("bioInfo", u"Type: -", None))
-        self.desc_label.setText(QCoreApplication.translate("bioInfo", u"Description: -", None))
         self.gc_label.setText(QCoreApplication.translate("bioInfo", u"GC%: -", None))
         self.atgc_label.setText(QCoreApplication.translate("bioInfo", u"AT/GC Ratio: -", None))
         self.mw_label.setText(QCoreApplication.translate("bioInfo", u"Molecular Weight: -", None))
+        self.desc_label.setText(QCoreApplication.translate("bioInfo", u"Description: -", None))
         ___qtablewidgetitem = self.base_table.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("bioInfo", u"A", None));
         ___qtablewidgetitem1 = self.base_table.horizontalHeaderItem(1)
@@ -819,5 +1033,13 @@ class Ui_bioInfo(object):
         self.base_table.setSortingEnabled(__sortingEnabled)
 
         self.sequence_view.setText(QCoreApplication.translate("bioInfo", u"    -   -   -   -", None))
+        self.lab_DNA.setText(QCoreApplication.translate("bioInfo", u"DNA :", None))
+        self.DNA_seq.setText(QCoreApplication.translate("bioInfo", u"- - - -", None))
+        self.lab_rev.setText(QCoreApplication.translate("bioInfo", u"Reverse Complement :", None))
+        self.rev_comp.setText(QCoreApplication.translate("bioInfo", u"- - - -", None))
+        self.label_6.setText(QCoreApplication.translate("bioInfo", u"Transcription (DNA \u2192 RNA) :", None))
+        self.trans_DNA_RNA.setText(QCoreApplication.translate("bioInfo", u"- - - -", None))
+        self.label_2.setText(QCoreApplication.translate("bioInfo", u"TextLabel", None))
+        self.label_3.setText(QCoreApplication.translate("bioInfo", u"- - - -", None))
     # retranslateUi
 

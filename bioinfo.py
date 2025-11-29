@@ -1,7 +1,7 @@
 # This Python file uses the following encoding: utf-8
 import sys
 
-from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QMessageBox
+from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QHeaderView
 from Bio import SeqIO
 from Bio.SeqUtils import gc_fraction, molecular_weight
 
@@ -21,20 +21,41 @@ class bioInfo(QWidget):
         self.sequence = None
         self.widgetIndex = 0
 
+
+        # setup window:
+
+        self.ui.stackedWidget.setCurrentIndex(0)
+
         # connecting buttons:
         self.ui.load_btn.clicked.connect(self.load_sequence)
 
         # setup stack
         self.ui.info_page.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(1))
 
+        # setup selector
+        self.ui.select_DNA.currentIndexChanged.connect(self.on_change_seq)
+
+        # setup_base_table
+        self.ui.base_table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
+
+    def on_change_seq(self, index):
+        if index < 0:
+            return
+        if self.sequence is not None:
+            self.update_info(self.sequence[index])
+        return
+
     def load_sequence(self):
         path, _ = QFileDialog.getOpenFileName(self, "Open FASTA", "", "FASTA Files (*.fasta *.fa *.txt)")
         if not path:
             return
 
-        record = SeqIO.read(path, "fasta")
-        self.sequence = record
-        self.update_info(record)
+        records = list(SeqIO.parse(path, "fasta"))
+        self.sequence = records
+        self.ui.select_DNA.clear()
+        for r in records:
+            self.ui.select_DNA.addItem(r.id)
+        self.update_info(records[0])
         self.ui.stackedWidget.setCurrentIndex(1)
 
     def update_info(self, record):

@@ -611,11 +611,11 @@ class Ui_bioInfo(object):
 
         self.verticalLayout_5.addWidget(self.trans_page)
 
-        self.pushButton_3 = QPushButton(self.frame_2)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setFont(font2)
+        self.motif_page = QPushButton(self.frame_2)
+        self.motif_page.setObjectName(u"motif_page")
+        self.motif_page.setFont(font2)
 
-        self.verticalLayout_5.addWidget(self.pushButton_3)
+        self.verticalLayout_5.addWidget(self.motif_page)
 
         self.pushButton_4 = QPushButton(self.frame_2)
         self.pushButton_4.setObjectName(u"pushButton_4")
@@ -807,7 +807,7 @@ class Ui_bioInfo(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 996, 50))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 141, 50))
         self.horizontalLayout_6 = QHBoxLayout(self.scrollAreaWidgetContents)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.sequence_view = QLabel(self.scrollAreaWidgetContents)
@@ -955,13 +955,13 @@ class Ui_bioInfo(object):
         self.scrollAreaWidgetContents_7.setSizePolicy(sizePolicy3)
         self.verticalLayout_9 = QVBoxLayout(self.scrollAreaWidgetContents_7)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.label_3 = QLabel(self.scrollAreaWidgetContents_7)
-        self.label_3.setObjectName(u"label_3")
-        sizePolicy.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
-        self.label_3.setSizePolicy(sizePolicy)
-        self.label_3.setFont(font4)
+        self.trans_RNA_PRO = QLabel(self.scrollAreaWidgetContents_7)
+        self.trans_RNA_PRO.setObjectName(u"trans_RNA_PRO")
+        sizePolicy.setHeightForWidth(self.trans_RNA_PRO.sizePolicy().hasHeightForWidth())
+        self.trans_RNA_PRO.setSizePolicy(sizePolicy)
+        self.trans_RNA_PRO.setFont(font4)
 
-        self.verticalLayout_9.addWidget(self.label_3)
+        self.verticalLayout_9.addWidget(self.trans_RNA_PRO)
 
         self.scrollArea_4.setWidget(self.scrollAreaWidgetContents_7)
 
@@ -996,7 +996,7 @@ class Ui_bioInfo(object):
         self.label.setText(QCoreApplication.translate("bioInfo", u"BIO PYTHON", None))
         self.info_page.setText(QCoreApplication.translate("bioInfo", u"Information", None))
         self.trans_page.setText(QCoreApplication.translate("bioInfo", u"Transform", None))
-        self.pushButton_3.setText(QCoreApplication.translate("bioInfo", u"Motif Search", None))
+        self.motif_page.setText(QCoreApplication.translate("bioInfo", u"Motif Search", None))
         self.pushButton_4.setText(QCoreApplication.translate("bioInfo", u"Alignment", None))
         self.pushButton.setText(QCoreApplication.translate("bioInfo", u"Visualization", None))
         self.pushButton_5.setText(QCoreApplication.translate("bioInfo", u"NCBI Fetch", None))
@@ -1039,7 +1039,7 @@ class Ui_bioInfo(object):
         self.rev_comp.setText(QCoreApplication.translate("bioInfo", u"- - - -", None))
         self.label_6.setText(QCoreApplication.translate("bioInfo", u"Transcription (DNA \u2192 RNA) :", None))
         self.trans_DNA_RNA.setText(QCoreApplication.translate("bioInfo", u"- - - -", None))
-        self.label_2.setText(QCoreApplication.translate("bioInfo", u"TextLabel", None))
-        self.label_3.setText(QCoreApplication.translate("bioInfo", u"- - - -", None))
+        self.label_2.setText(QCoreApplication.translate("bioInfo", u"Translation (RNA \u2192 Protein)", None))
+        self.trans_RNA_PRO.setText(QCoreApplication.translate("bioInfo", u"- - - -", None))
     # retranslateUi
 

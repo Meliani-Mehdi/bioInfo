@@ -4,6 +4,7 @@ import sys
 from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QHeaderView
 from Bio import SeqIO
 from Bio.SeqUtils import gc_fraction, molecular_weight
+from Bio.Seq import Seq
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -30,13 +31,20 @@ class bioInfo(QWidget):
         self.ui.load_btn.clicked.connect(self.load_sequence)
 
         # setup stack
-        self.ui.info_page.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(1))
+        self.ui.info_page.clicked.connect(lambda: self.set_window_index(1))
+        self.ui.trans_page.clicked.connect(lambda: self.set_window_index(2))
+        self.ui.trans_page.clicked.connect(lambda: self.set_window_index(3))
 
         # setup selector
         self.ui.select_DNA.currentIndexChanged.connect(self.on_change_seq)
 
         # setup_base_table
         self.ui.base_table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
+
+    def set_window_index(self, index):
+        if self.sequence is not None and index >= 0:
+            self.ui.stackedWidget.setCurrentIndex(index)
+        return
 
     def on_change_seq(self, index):
         if index < 0:
@@ -100,6 +108,12 @@ class bioInfo(QWidget):
 
         # Sequence viewer
         self.ui.sequence_view.setText(seq)
+
+        # DNA viewer
+        self.ui.DNA_seq.setText(seq)
+        self.ui.rev_comp.setText(str(record.seq.complement()))
+        self.ui.trans_DNA_RNA.setText(str(record.seq.transcribe()))
+        # self.ui.trans_RNA_PRO.setText(str(record.seq.ungap('-').translate(to_stop=False)))
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
